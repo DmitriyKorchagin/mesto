@@ -1,0 +1,6 @@
+.profile__inline {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+}

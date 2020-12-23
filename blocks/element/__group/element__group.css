@@ -1,0 +1,13 @@
+.element__group {
+    background-image: url('../../../images/element__heart.svg');
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    height: 18.13px;
+    background-size: cover;
+    width: 100%;
+    max-width: 20.76px;
+    align-self: center;
+    margin-right: 18.24px;
+    border: none;
+    padding: 0;
+}
