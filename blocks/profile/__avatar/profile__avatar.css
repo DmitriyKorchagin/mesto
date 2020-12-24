@@ -4,3 +4,16 @@
     height: auto;
     padding-right: 30px;
 }
+
+@media screen and (max-width: 780px) {
+    .profile__avatar {
+        padding: 0;
+        /* margin-bottom: 26px; */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .profile__avatar {
+        padding-bottom: 26px;
+    }
+}

@@ -6,3 +6,9 @@
     padding: 16px 0 0;
     margin: 0;
 }
+
+@media screen and (max-width: 600px) {
+    .profile__experiance {
+        padding: 0;
+    }
+}

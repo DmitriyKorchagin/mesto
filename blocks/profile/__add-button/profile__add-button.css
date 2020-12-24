@@ -2,9 +2,31 @@
     background-image: url('../../../images/profile__add-button_vector.svg');
     border: 2px solid #FFF;
     box-sizing: border-box;
+    background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
     height: 50px;
     max-width: 150px;
     width: 100%;
+    background-color: #f000;
+    padding: 0;
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;
+    transition: 0.3s ease;
+}
+
+@media screen and (max-width: 780px) {
+    .profile__add-button {
+        max-width: 80vw;
+        min-width: 282px;
+        margin-top: 36px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__add-button {
+        max-width: 100%;
+    }
 }
