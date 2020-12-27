@@ -1,6 +1,6 @@
 ## Проект 4: 
 
-# [Место](https://dmitriykorchagin.github.io/russian-travel/index.html "GitHub Pages Russian &ndash; Travel")
+# [Место](https://dmitriykorchagin.github.io/mesto/index.html "GitHub Pages Mesto")
 
 ### **Описание**
 
