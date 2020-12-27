@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
-<div class="main-page">
 
-    <body class="body">
+<body class="body">
+    <div class="main-page">
         <header class="header">
             <img src="./images/header__logo.svg" alt="логотип Mesto" class="header__logo">
         </header>
         <main>
             <section class="profile">
-
                 <div class="profile__avatar">
                     <img src="./images/avatar-image.jpg" alt="Исследователь Жак-Ив Кусто" class="profile__image">
                 </div>
@@ -25,12 +24,8 @@
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__edit-button"></button>
                     </div>
-
                     <p class="profile__job">Исследователь океана</p>
-                    </ul>
-
                 </div>
-
                 <button class="profile__add-button"></button>
             </section>
             <section class="elements">
@@ -86,22 +81,17 @@
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
-
-</div>
-<section class="popup popup_opened">
-    <form class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input-name popup__input_style" value="#" />
-        <input type="text" class="popup__input-job popup__input_style" />
-        <input type="submit" class="popup__submit" value="Сохранить">
-        <div class="popup__close-button"></div>
-
-
-    </form>
-</section>
-
-
-<script src="./scripts/index.js"></script>
+    </div>
+    <section class="popup popup_opened">
+        <form class="popup__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" class="popup__input-name popup__input_style" />
+            <input type="text" class="popup__input-job popup__input_style" />
+            <input type="submit" class="popup__submit" value="Сохранить">
+            <div class="popup__close-button"></div>
+        </form>
+    </section>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
