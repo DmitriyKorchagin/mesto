@@ -1,4 +1,4 @@
-.profile__experiance {
+.profile__job {
     font-weight: normal;
     font-size: 18px;
     line-height: 1.2;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .profile__experiance {
+    .profile__job {
         padding: 0;
     }
 }
