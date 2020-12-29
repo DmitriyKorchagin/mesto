@@ -2,8 +2,16 @@
     padding-bottom: 41px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
     .header__logo {
-        padding-bottom: 31.6px;
+        padding-left: 27px;
     }
 }
+
+@media screen and (max-width: 600px) {
+        .header__logo {
+            padding-bottom: 31.6px;
+            max-width: 103.74px;
+            width: 100%;
+        }
+    }

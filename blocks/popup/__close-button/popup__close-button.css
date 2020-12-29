@@ -2,17 +2,18 @@
     width: 40px;
     height: 40px;
     background-size: contain;
-    /* font-size: 40px; */
+    color: initial;
     position: absolute;
     top: -35px;
     right: -35px;
     cursor: pointer;
     background-image: url(../../../images/popup__close-button.svg);
-    /* transform: rotate(45deg); */
+    background-color: #f000;
+    border: none;
 }
 
 .popup__close-button:hover {
-    opacity: 0.4;
+    opacity: 0.6;
     transition: 0.3s ease-in;
 }
 

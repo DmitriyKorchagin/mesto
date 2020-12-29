@@ -2,14 +2,19 @@
     display: flex;
     width: 100%;
     padding: 0 0 51px 0;
-    margin: 0;
+    margin: 0 auto;
     align-items: center;
 }
 
 @media screen and (max-width: 780px) {
     .profile {
         flex-direction: column;
-        align-items: center;
         padding-bottom: 36px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile {
+        max-width: 282px;
     }
 }

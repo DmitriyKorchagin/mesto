@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
@@ -16,9 +15,9 @@
         </header>
         <main>
             <section class="profile">
-                <div class="profile__avatar">
-                    <img src="./images/avatar-image.jpg" alt="Исследователь Жак-Ив Кусто" class="profile__image">
-                </div>
+
+                <img src="./images/avatar-image.jpg" alt="Исследователь Жак-Ив Кусто" class="profile__image">
+
                 <div class="profile__info">
                     <div class="profile__inline">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -27,7 +26,7 @@
                     <p class="profile__job">Исследователь океана</p>
                 </div>
                 <button class="profile__add-button"></button>
-            </section>
+            </section> -->
             <section class="elements">
                 <article class="element">
                     <img src="./images/element__image Гора Эльбрус.jpg" alt="изображение горы Эльбрус"
@@ -88,7 +87,7 @@
             <input type="text" class="popup__input-name popup__style" />
             <input type="text" class="popup__input-job popup__style" />
             <input type="submit" class="popup__submit" value="Сохранить">
-            <div class="popup__close-button"></div>
+            <button class="popup__close-button"></button>
         </form>
     </section>
     <script src="./scripts/index.js"></script>

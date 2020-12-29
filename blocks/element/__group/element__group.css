@@ -10,6 +10,7 @@
     margin-right: 18.24px;
     border: none;
     padding: 0;
+    cursor: pointer;
 }
 
 .element__group:hover {
