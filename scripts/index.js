@@ -3,57 +3,50 @@ let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close-button');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
+let popupForm = popup.querySelector('.popup__container');
+let nameInput = popupForm.querySelector('.popup__input_name');
+let jobInput = popupForm.querySelector('.popup__input_job');
 
-let togglePopup = () => {
+
+/* let togglePopup = () => {
     popup.classList.toggle('popup_opened');
-    NameInput = ('.profile__name').value
-    // console.dir(profileName);
-    console.dir(NameInput);
-    // console.log(profileName.innerText);
+
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+} */
+
+function openedPopup() {
+    popup.classList.add('popup_opened');
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
 }
 
-editButton.addEventListener('click', togglePopup)
-closeButton.addEventListener('click', togglePopup)
+function closePopup() {
+    popup.classList.remove('popup_opened');
+}
 
 popup.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
-        togglePopup()
+        closePopup()
     }
 })
 
-let popupForm = popup.querySelector('.popup__container');
-
-popupForm.addEventListener('submit', event => {
+/* popupForm.addEventListener('submit', event => {
     event.preventDefault();
 
-    let NameInput = popupForm.querySelector('.popup__input-name').value
-    let jobInput = popupForm.querySelector('.popup__input-job').value
+    profileName.textContent = NameInput.value;
+    profileJob.textContent = jobInput.value;
+}) */
 
-    profileName.textContent = NameInput;
-    profileJob.textContent = jobInput;
+let handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    closePopup()
+}
 
-})
-
-
-
-
-
-
-
-
-
-
-
-
-    // Получите значение полей из свойства value
-
-    // Выберите элементы, куда должны быть вставлены значения полей
-
-    // Вставьте новые значения с помощью textContent
-
-
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-
-
-// 
+popupForm.addEventListener('submit', handleFormSubmit);
+/* editButton.addEventListener('click', togglePopup); */
+/* closeButton.addEventListener('click', togglePopup); */
+editButton.addEventListener('click', openedPopup);
+closeButton.addEventListener('click', closePopup);

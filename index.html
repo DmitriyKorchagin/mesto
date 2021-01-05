@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
@@ -16,64 +15,64 @@
         </header>
         <main>
             <section class="profile">
-                <div class="profile__avatar">
-                    <img src="./images/avatar-image.jpg" alt="Исследователь Жак-Ив Кусто" class="profile__image">
-                </div>
+
+                <img src="./images/avatar-image.jpg" alt="Исследователь Жак-Ив Кусто" class="profile__image">
+
                 <div class="profile__info">
                     <div class="profile__inline">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button"></button>
+                        <button type="button" class="profile__edit-button"></button>
                     </div>
                     <p class="profile__job">Исследователь океана</p>
                 </div>
-                <button class="profile__add-button"></button>
-            </section>
+                <button type="button" class="profile__add-button"></button>
+            </section> -->
             <section class="elements">
                 <article class="element">
-                    <img src="./images/element__image Гора Эльбрус.jpg" alt="изображение горы Эльбрус"
+                    <img src="./images/element__image_Гора_Эльбрус.jpg" alt="изображение горы Эльбрус"
                         class="element__image">
                     <div class="element__rectangle">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__group"></button>
+                        <button type="button" class="element__group"></button>
                     </div>
                 </article>
                 <article class="element">
-                    <img src="./images/element__image Домбай.jpg" alt="изображение горы Эльбрус" class="element__image">
+                    <img src="./images/element__image_Домбай.jpg" alt="изображение горы Эльбрус" class="element__image">
                     <div class="element__rectangle">
                         <h2 class="element__title">Домбай</h2>
-                        <button class="element__group"></button>
+                        <button type="button" class="element__group"></button>
                     </div>
                 </article>
                 <article class="element">
-                    <img src="./images/element__image Карачаево-Черкессия.jpg" alt="изображение горы Эльбрус"
+                    <img src="./images/element__image_Карачаево-Черкессия.jpg" alt="изображение горы Эльбрус"
                         class="element__image">
                     <div class="element__rectangle">
                         <h2 class="element__title">Карачаево-Черкессия</h2>
-                        <button class="element__group"></button>
+                        <button type="button" class="element__group"></button>
                     </div>
                 </article>
                 <article class="element">
-                    <img src="./images/element__image Гора Эльбрус.jpg" alt="изображение горы Эльбрус"
+                    <img src="./images/element__image_Гора_Эльбрус.jpg" alt="изображение горы Эльбрус"
                         class="element__image">
                     <div class="element__rectangle">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__group"></button>
+                        <button type="button" class="element__group"></button>
                     </div>
                 </article>
                 <article class="element">
-                    <img src="./images/element__image Гора Эльбрус.jpg" alt="изображение горы Эльбрус"
+                    <img src="./images/element__image_Гора_Эльбрус.jpg" alt="изображение горы Эльбрус"
                         class="element__image">
                     <div class="element__rectangle">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__group"></button>
+                        <button type="button" class="element__group"></button>
                     </div>
                 </article>
                 <article class="element">
-                    <img src="./images/element__image Гора Эльбрус.jpg" alt="изображение горы Эльбрус"
+                    <img src="./images/element__image_Гора_Эльбрус.jpg" alt="изображение горы Эльбрус"
                         class="element__image">
                     <div class="element__rectangle">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__group"></button>
+                        <button type="button" class="element__group"></button>
                     </div>
                 </article>
             </section>
@@ -83,12 +82,12 @@
         </footer>
     </div>
     <section class="popup">
-        <form class="popup__container">
+        <form class="popup__container" name="popup-form">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__input-name popup__style" />
-            <input type="text" class="popup__input-job popup__style" />
+            <input type="text" class="popup__input popup__input_name" name="popup-input-name" />
+            <input type="text" class="popup__input popup__input_job" name="popup-input-job" />
             <input type="submit" class="popup__submit" value="Сохранить">
-            <div class="popup__close-button"></div>
+            <button type="button" class="popup__close-button"></button>
         </form>
     </section>
     <script src="./scripts/index.js"></script>
