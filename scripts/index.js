@@ -1,12 +1,14 @@
-let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__close-button');
+const popup = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__edit-button');
+const closeButton = document.querySelector('.popup__close-button');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
-let popupForm = popup.querySelector('.popup__container');
+const popupForm = popup.querySelector('.popup__container');
 let nameInput = popupForm.querySelector('.popup__input_name');
 let jobInput = popupForm.querySelector('.popup__input_job');
-
+const popupPlace = document.querySelector('.popup[name="popup_place"]');
+const addButton = document.querySelector('.profile__add-button');
+const closeButtonEditForm = document.querySelector('.popup__close-button_edit-form');
 
 /* let togglePopup = () => {
     popup.classList.toggle('popup_opened');
@@ -81,7 +83,7 @@ const initialCards = [
 
 
 
-const elementTemplate = document.querySelector('#element_template').content
+const elementTemplate = document.querySelector('.element_template').content;
 const elements = document.querySelector('.elements');
 
 
@@ -92,3 +94,19 @@ initialCards.forEach(function(element){
     elements.append(elementCards);
 })
 
+function openedPopupEdit() {
+    popupPlace.classList.add('popup_opened');
+}
+
+function closePopupEdit() {
+    popupPlace.classList.remove('popup_opened');
+}
+
+addButton.addEventListener('click', openedPopupEdit);
+closeButtonEditForm.addEventListener('click', closePopupEdit);
+
+popupPlace.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        closePopupEdit()
+    }
+});
