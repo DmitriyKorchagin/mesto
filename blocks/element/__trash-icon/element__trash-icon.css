@@ -1,0 +1,14 @@
+.element__trash-icon {
+    background-image: url(../../../images/element__trash-button.svg);
+    background-repeat: no-repeat;
+    /* background-color: #FFFFFF; */
+    height: 18px;
+    background-size: cover;
+    width: 100%;
+    max-width: 19.3px;
+    /* align-self: center;
+    margin-right: 18.24px; */
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
