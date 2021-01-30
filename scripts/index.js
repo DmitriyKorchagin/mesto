@@ -14,6 +14,7 @@ const closeButtonEditForm = document.querySelector(
 const popupCardForm = document.querySelector(".popup-form-place");
 const cardImage = document.querySelector(".element__image");
 const cardTitle = document.querySelector(".element__title");
+const likeButton = document.querySelector(".element__group");
 const elements = document.querySelector(".elements");
 const placeTitleInput = document.querySelector(".popup__input_place");
 const imageLinkInput = document.querySelector(".popup__input_link");
@@ -86,9 +87,16 @@ function renderCards(element) {
   const elementCards = elementTemplate.cloneNode(true);
   elementCards.querySelector(".element__image").src = element.link;
   elementCards.querySelector(".element__title").textContent = element.name;
+  likeButtonToggle(elementCards);
   elements.prepend(elementCards);
 }
 
+
+function likeButtonToggle(elementCards) {
+  elementCards.querySelector(".element__group").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("element__group_active");
+  });
+}
 
 function render() {
   initialCards.forEach(renderCards);
@@ -102,23 +110,25 @@ const handleCardSubmit = (evt)  => {
   const elementCards = elementTemplate.cloneNode(true);
   elementCards.querySelector(".element__image").src = imageLinkInput.value;
   elementCards.querySelector(".element__title").textContent = placeTitleInput.value;
+  likeButtonToggle(elementCards);
   elements.prepend(elementCards);
   imageLinkInput.value = '';
   placeTitleInput.value = '';
 };
 
-function PopupEditToggle() {
+function popupEditToggle() {
   popupPlace.classList.toggle("popup_opened");
 }
 
 popupPlace.addEventListener("click", (event) => {
   if (event.target === event.currentTarget) {
-    PopupEditToggle();
+    popupEditToggle();
   }
 });
 
 render();
 
-closeButtonEditForm.addEventListener("click", PopupEditToggle);
+
+closeButtonEditForm.addEventListener("click", popupEditToggle);
 popupPlace.addEventListener("submit", handleCardSubmit);
-addButton.addEventListener("click", PopupEditToggle);
+addButton.addEventListener("click", popupEditToggle);
