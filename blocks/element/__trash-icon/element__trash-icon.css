@@ -1,14 +1,20 @@
 .element__trash-icon {
-    background-image: url(../../../images/element__trash-button.svg);
+    background-image: url(../../../images/element__trash-icon.svg);
     background-repeat: no-repeat;
-    /* background-color: #FFFFFF; */
+    padding: 0;
+    border: none;
+    color: inherit;
+    background-color: transparent;
+    position: absolute;
+    top: 18px;
+    right: 15px;
     height: 18px;
-    background-size: cover;
+    background-position: center;
     width: 100%;
     max-width: 19.3px;
-    /* align-self: center;
-    margin-right: 18.24px; */
-    border: none;
-    padding: 0;
     cursor: pointer;
+}
+
+.element__trash-icon:hover {
+    opacity: 0.6;
 }

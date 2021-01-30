@@ -14,6 +14,7 @@ const closeButtonEditForm = document.querySelector(
 const popupCardForm = document.querySelector(".popup-form-place");
 const cardImage = document.querySelector(".element__image");
 const cardTitle = document.querySelector(".element__title");
+const likeButton = document.querySelector(".element__group");
 const elements = document.querySelector(".elements");
 const placeTitleInput = document.querySelector(".popup__input_place");
 const imageLinkInput = document.querySelector(".popup__input_link");
@@ -81,44 +82,64 @@ const initialCards = [
 const elementTemplate = document.querySelector(".element_template").content;
 const elementCards = elementTemplate.cloneNode(true);
 
+// create card from arrey
 function renderCards(element) {
   const elementTemplate = document.querySelector(".element_template").content;
   const elementCards = elementTemplate.cloneNode(true);
   elementCards.querySelector(".element__image").src = element.link;
   elementCards.querySelector(".element__title").textContent = element.name;
+  elementCards.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
+  likeButtonToggle(elementCards);
   elements.prepend(elementCards);
 }
 
+// like button func
+function likeButtonToggle(elementCards) {
+  elementCards.querySelector(".element__group").addEventListener("click", function (evt) {
+      evt.target.classList.toggle("element__group_active");
+    });
+}
 
+//remove card from trash icon
+function deleteCard(evt) {
+  evt.target.closest(".element").remove();
+}
+
+// render card from arrey
 function render() {
   initialCards.forEach(renderCards);
 }
 
 //create card from popup
-const handleCardSubmit = (evt)  => {
+const handleCardSubmit = (evt) => {
   evt.preventDefault();
-
   const elementTemplate = document.querySelector(".element_template").content;
   const elementCards = elementTemplate.cloneNode(true);
   elementCards.querySelector(".element__image").src = imageLinkInput.value;
   elementCards.querySelector(".element__title").textContent = placeTitleInput.value;
+  elementCards.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
+  likeButtonToggle(elementCards);
   elements.prepend(elementCards);
-  imageLinkInput.value = '';
-  placeTitleInput.value = '';
+  
+  imageLinkInput.value = "";
+  placeTitleInput.value = "";
+  popupEditToggle();
 };
 
-function PopupEditToggle() {
+//toogle popup edit func
+function popupEditToggle() {
   popupPlace.classList.toggle("popup_opened");
 }
 
+
 popupPlace.addEventListener("click", (event) => {
   if (event.target === event.currentTarget) {
-    PopupEditToggle();
+    popupEditToggle();
   }
 });
 
 render();
 
-closeButtonEditForm.addEventListener("click", PopupEditToggle);
+closeButtonEditForm.addEventListener("click", popupEditToggle);
 popupPlace.addEventListener("submit", handleCardSubmit);
-addButton.addEventListener("click", PopupEditToggle);
+addButton.addEventListener("click", popupEditToggle);
