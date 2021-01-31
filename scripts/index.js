@@ -8,8 +8,7 @@ const nameInput = popupForm.querySelector(".popup__input_name");
 const jobInput = popupForm.querySelector(".popup__input_job");
 const popupPlace = document.querySelector('.popup[name="popup_place"]');
 const addButton = document.querySelector(".profile__add-button");
-const closeButtonEditForm = document.querySelector(
-  ".popup__close-button_edit-form"
+const closeButtonEditForm = document.querySelector(".popup__close-button_edit-form"
 );
 const popupCardForm = document.querySelector(".popup-form-place");
 const cardImage = document.querySelector(".element__image");
@@ -18,6 +17,10 @@ const likeButton = document.querySelector(".element__group");
 const elements = document.querySelector(".elements");
 const placeTitleInput = document.querySelector(".popup__input_place");
 const imageLinkInput = document.querySelector(".popup__input_link");
+const popupImage = document.querySelector(".popup-image-scale");
+const imageCloseButton = document.querySelector(".popup-image-scale__close-button");
+const popupImageTitle = document.querySelector(".popup-image-scale__title");
+const popupImageContent = document.querySelector(".popup-image-scale__content");
 
 function openedPopup() {
   popup.classList.add("popup_opened");
@@ -89,6 +92,7 @@ function renderCards(element) {
   elementCards.querySelector(".element__image").src = element.link;
   elementCards.querySelector(".element__title").textContent = element.name;
   elementCards.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
+  elementCards.querySelector(".element__image").addEventListener("click", popupImageToggle);
   likeButtonToggle(elementCards);
   elements.prepend(elementCards);
 }
@@ -118,6 +122,7 @@ const handleCardSubmit = (evt) => {
   elementCards.querySelector(".element__image").src = imageLinkInput.value;
   elementCards.querySelector(".element__title").textContent = placeTitleInput.value;
   elementCards.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
+  elementCards.querySelector(".element__image").addEventListener("click", popupImageToggle);
   likeButtonToggle(elementCards);
   elements.prepend(elementCards);
   
@@ -140,6 +145,23 @@ popupPlace.addEventListener("click", (event) => {
 
 render();
 
+// popupImage toggle func
+function popupImageToggle() {
+  popupImage.classList.toggle("popup-image-scale_opened");
+  // popupImageTitle.value = cardTitle.textContent
+  popupImageContent.src = cardImage.src
+}
+
+popupImage.addEventListener("click", (event) => {
+  if (event.target === event.currentTarget) {
+    popupImageToggle();
+  }
+});
+
+
+
+
 closeButtonEditForm.addEventListener("click", popupEditToggle);
 popupPlace.addEventListener("submit", handleCardSubmit);
 addButton.addEventListener("click", popupEditToggle);
+imageCloseButton.addEventListener("click", popupImageToggle);

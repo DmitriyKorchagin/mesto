@@ -1,0 +1,21 @@
+.popup-image-scale {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: 'Inter', 'Arial', sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+    .popup-image {
+        padding: 123px 19px 0 19px;
+    }
+}

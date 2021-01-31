@@ -30,3 +30,9 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/element/__group/_active/element__group_active.css);
 @import url(../blocks/element/__trash-icon/element__trash-icon.css);
+@import url(../blocks/popup-image-scale/popup-image-scale.css);
+@import url(../blocks/popup-image-scale/__content/popup-image-scale__content.css);
+@import url(../blocks/popup-image-scale/__title/popup-image-scale__title.css);
+@import url(../blocks/popup-image-scale/_opened/popup-image-scale_opened.css);
+@import url(../blocks/popup-image-scale/__close-button/popup-image-scale__close-button.css);
+@import url(../blocks/popup-image-scale/__container/popup-image-scale__container.css);
