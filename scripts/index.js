@@ -125,12 +125,12 @@ function photoUpScale(evt) {
     popupImageToggle();
 };
 
-//remove card from trash icon
+//remove card from trash icon func
 function deleteCard(evt) {
   evt.target.closest(".element").remove();
 }
 
-// render card from arrey
+// render card from arrey func
 function render() {
   initialCards.forEach(renderCards);
 }
