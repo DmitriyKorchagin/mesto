@@ -20,7 +20,7 @@ const popupImage = document.querySelector(".popup-image-scale");
 const imageCloseButton = document.querySelector(".popup-image-scale__close-button");
 const popupImageTitle = document.querySelector(".popup-image-scale__title");
 const popupImageContent = document.querySelector(".popup-image-scale__content");
-let popupImageScale = document.querySelector(".popup-image-scale__container");
+const popupImageScale = document.querySelector(".popup-image-scale__container");
 
 
 function openedPopup() {
@@ -117,13 +117,10 @@ function popupImageToggle() {
 
 function photoUpScale(evt) {
     // popupImageScale = evt.target.closest(".element");
-    // popupImageContent.src = popupImageScale.querySelector(".element__image").src;
-    // popupImageTitle.textContent = popupImageScale.querySelector(".element__title").textContent;
-
-    // popupImageContent.src = evt.target.closest(".element__image").src;
-    // popupImageTitle.textContent = evt.target(".element__title").textContent;
-    const imageSrc = evt.target.closest(".element__image").src;
-    const ImageTitle = evt.target.closest(".element").querySelector("element__title").textContent;
+    popupImageContent.src = evt.target.closest(".element__image").src;
+    popupImageTitle.textContent = evt.target(".element__title").textContent;
+    // const imageSrc = evt.target.closest(".element__image").src;
+    // const ImageTitle = evt.target.closest(".element__title").querySelector("element__title").textContent;
     console.log(ImageTitle);
     popupImageToggle();
 };
