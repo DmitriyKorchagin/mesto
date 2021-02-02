@@ -1,0 +1,24 @@
+.popup-image-scale__close-button {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    color: initial;
+    cursor: pointer;
+    background-image: url(../../../images/popup__close-button.svg);
+    background-color: #f000;
+    border: none;
+    padding: 0;
+    margin-top: -35px;
+    margin-right: -35px;
+    /* margin: 0; */
+}
+
+.popup-image-scale__close-button:hover {
+    opacity: 0.6;
+    transition: 0.3s ease-in;
+}

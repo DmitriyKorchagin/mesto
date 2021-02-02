@@ -1,3 +1,4 @@
 .popup_opened {
     display: flex;
+    transition: 3s ease-in-out;
 }
