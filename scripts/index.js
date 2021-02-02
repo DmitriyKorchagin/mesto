@@ -6,7 +6,7 @@ const profileJob = document.querySelector(".profile__job");
 const popupForm = popup.querySelector(".popup__container");
 const nameInput = popupForm.querySelector(".popup__input_name");
 const jobInput = popupForm.querySelector(".popup__input_job");
-const popupPlace = document.querySelector('.popup[name="popup_place"]');
+const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
 const closeButtonEditForm = document.querySelector(".popup__close-button_edit-form");
 const popupCardForm = document.querySelector(".popup-form-place");
