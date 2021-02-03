@@ -95,11 +95,11 @@ function renderCards(element) {
   setListeners(elementCards);
   likeButtonToggle(elementCards);
   elements.prepend(elementCards);
-}
+};
 
+  
 function setListeners (elementCards) {
   elementCards.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
-  elementCards.querySelector(".element__image").addEventListener("click", popupImageToggle);
   elementCards.querySelector(".element__image").addEventListener("click", photoUpScale);
 }
 
@@ -116,14 +116,12 @@ function popupImageToggle() {
 }
 
 function photoUpScale(evt) {
-    // popupImageScale = evt.target.closest(".element");
-    popupImageContent.src = evt.target.closest(".element__image").src;
-    popupImageTitle.textContent = evt.target(".element__title").textContent;
-    // const imageSrc = evt.target.closest(".element__image").src;
-    // const ImageTitle = evt.target.closest(".element__title").querySelector("element__title").textContent;
-    console.log(ImageTitle);
-    popupImageToggle();
-};
+  popupImageContent.src = evt.target.closest(".element__image").src;
+  popupImageTitle.textContent = evt.target.closest(".element").querySelector(".element__title").textContent;
+  popupImageToggle();
+}
+
+
 
 //remove card from trash icon func
 function deleteCard(evt) {
