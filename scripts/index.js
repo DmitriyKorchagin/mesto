@@ -21,6 +21,7 @@ const imageCloseButton = document.querySelector(".popup-image-scale__close-butto
 const popupImageTitle = document.querySelector(".popup-image-scale__title");
 const popupImageContent = document.querySelector(".popup-image-scale__content");
 const popupImageScale = document.querySelector(".popup-image-scale__container");
+const elementTemplate = document.querySelector(".element_template").content;
 
 
 function openedPopup() {
@@ -83,25 +84,57 @@ const initialCards = [
   },
 ];
 
-const elementTemplate = document.querySelector(".element_template").content;
-const elementCards = elementTemplate.cloneNode(true);
+
+
 
 // create card from arrey
 function renderCards(element) {
   const elementTemplate = document.querySelector(".element_template").content;
   const elementCards = elementTemplate.cloneNode(true);
-  elementCards.querySelector(".element__image").src = element.link;
   elementCards.querySelector(".element__title").textContent = element.name;
+  elementCards.querySelector(".element__image").setAttribute('alt', element.name);
+  elementCards.querySelector(".element__image").src = element.link;
+  
+
   setListeners(elementCards);
   likeButtonToggle(elementCards);
   elements.prepend(elementCards);
 };
 
-  
+
+// render card from arrey func
+function render() {
+  initialCards.forEach(renderCards);
+}
+
+
 function setListeners (elementCards) {
   elementCards.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
   elementCards.querySelector(".element__image").addEventListener("click", photoUpScale);
 }
+
+//create card from popup
+const handleCardSubmit = (evt) => {
+  evt.preventDefault();
+  const elementTemplate = document.querySelector(".element_template").content;
+  const elementCards = elementTemplate.cloneNode(true);
+  elementCards.querySelector(".element__image").src = imageLinkInput.value;
+  elementCards.querySelector(".element__title").textContent = placeTitleInput.value;
+  elementCards.querySelector(".element__image").setAttribute('alt', placeTitleInput.value);
+  setListeners(elementCards);
+  likeButtonToggle(elementCards);
+  elements.prepend(elementCards);
+
+  imageLinkInput.value = "";
+  placeTitleInput.value = "";
+  popupEditToggle();
+};
+
+
+
+
+  
+
 
 // like button func
 function likeButtonToggle(elementCards) {
@@ -121,33 +154,13 @@ function photoUpScale(evt) {
   popupImageToggle();
 }
 
-
-
 //remove card from trash icon func
 function deleteCard(evt) {
   evt.target.closest(".element").remove();
 }
 
-// render card from arrey func
-function render() {
-  initialCards.forEach(renderCards);
-}
 
-//create card from popup
-const handleCardSubmit = (evt) => {
-  evt.preventDefault();
-  const elementTemplate = document.querySelector(".element_template").content;
-  const elementCards = elementTemplate.cloneNode(true);
-  elementCards.querySelector(".element__image").src = imageLinkInput.value;
-  elementCards.querySelector(".element__title").textContent = placeTitleInput.value;
-  setListeners(elementCards);
-  likeButtonToggle(elementCards);
-  elements.prepend(elementCards);
 
-  imageLinkInput.value = "";
-  placeTitleInput.value = "";
-  popupEditToggle();
-};
 
 //toogle popup edit func
 function popupEditToggle() {
