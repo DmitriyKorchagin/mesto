@@ -80,7 +80,7 @@ function popupToggle(element) {
 const handleCardSubmit = evt => {
   evt.preventDefault();
   elements.prepend(createNewCard(imageLinkInput.value, placeTitleInput.value));
-  ppopupToggle(popupCardForm);
+  popupToggle(popupPlace);
 }
 
 //create new card func 
