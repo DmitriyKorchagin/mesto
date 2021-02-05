@@ -23,7 +23,6 @@ const popupImage = document.getElementById("popup_image");
 const imageCloseButton = document.querySelector(".popup__close-button_image-scale");
 const popupImageTitle = document.querySelector(".popup__image-title");
 const popupImageContent = document.querySelector(".popup__image-scale");
-console.log(popupImageContent);
 const elementTemplate = document.querySelector(".element_template").content;
 
 const initialCards = [
@@ -81,7 +80,7 @@ function popupToggle(element) {
 const handleCardSubmit = evt => {
   evt.preventDefault();
   elements.prepend(createNewCard(imageLinkInput.value, placeTitleInput.value));
-  ppopupToggle(popupCardForm);
+  popupToggle(popupPlace);
 }
 
 //create new card func 
