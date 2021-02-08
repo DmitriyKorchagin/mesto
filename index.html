@@ -26,16 +26,16 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-      -->
+      
       <section class="elements">
-        </section>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <section class="popup" name="popup_edit_profile">
-    <form class="popup__container" name="popup-form-profile">
+  <section class="popup popup_profile">
+    <form class="popup__container" name="popup-profile-form-profile">
       <h2 class="popup__title">Редактировать профиль</h2>
       <input type="text" class="popup__input popup__input_name" name="popup-input-name" />
       <input type="text" class="popup__input popup__input_job" name="popup-input-job" />
@@ -43,30 +43,29 @@
       <button type="button" class="popup__close-button"></button>
     </form>
   </section>
-  <section class="popup" name="popup_place">
+  <section class="popup popup_place">
     <form class="popup__container" name="popup-form popup-form-place">
       <h2 class="popup__title">Новое место</h2>
-      <input type="text" class="popup__input popup__input_place" placeholder="Название" name="popup-input-place" />
-      <input type="text" class="popup__input popup__input_link" placeholder="Ссылка на картинку" name="popup-image-link"
-        name="popup-input-link" />
+      <input type="text" class="popup__input popup__input_place" placeholder="Название" name="popup-input-place" required="required"/>
+      <input type="url" class="popup__input popup__input_link" placeholder="Ссылка на картинку" name="popup-image-link" />
       <input type="submit" class="popup__submit popup__submit_place" value="Сохранить" />
       <button type="button" class="popup__close-button popup__close-button_edit-form"></button>
     </form>
   </section>
-  <section class="popup-image-scale" name="popup-image">
-    <div class="popup-image-scale__container">
-      <img src="" alt="" class="popup-image-scale__content" />
-      <h2 class="popup-image-scale__title"></h2>
-      <button type="button" class="popup-image-scale__close-button"></button>
+  <section class="popup popup_image" id="popup_image">
+    <div class="popup__image-container">
+      <img src="#" alt="#" class="popup__image-scale" />
+      <h2 class="popup__image-title"></h2>
+      <button type="button" class="popup__close-button popup__close-button_image-scale"></button>
     </div>
   </section>
 
   <template class="element_template">
     <article class="element">
       <button class="element__trash-icon" type="button"></button>
-      <img src="" alt="изображение горы Эльбрус" class="element__image" />
+      <img src="#" alt="#" class="element__image" />
       <div class="element__rectangle">
-        <h2 class="element__title"></h2>
+        <h2 class="element__title" name="element-title-image"></h2>
         <button type="button" class="element__group"></button>
       </div>
     </article>
