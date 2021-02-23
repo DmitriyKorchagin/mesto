@@ -59,6 +59,7 @@ const initialCards = [
 ];
 
 // заполение form profile текущими значениями
+
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -127,7 +128,7 @@ popupProfile.addEventListener("click", (event) => {
   }
 });
 
-popupForm.addEventListener("submit", handleFormSubmit);
+// popupForm.addEventListener("submit", handleFormSubmit);
 editButton.addEventListener('click', () => popupToggle(popupProfile));
 closeButton.addEventListener("click", () => popupToggle(popupProfile));
 closeButtonEditForm.addEventListener("click", () => popupToggle(popupPlace));
@@ -150,3 +151,88 @@ popupImage.addEventListener("click", (event) => {
 
 renderInitialCards();
 fillInputValue(popupProfile);
+
+
+
+
+
+//valid
+// const popupForm = popupProfile.querySelector(".popup__container");
+const profileSubmitButton = document.querySelector('.popup__submit');
+const popupInput = document.getElementById('text-name-input');
+const formList = Array.from(document.querySelectorAll('.popup__container'));
+const inputList = Array.from(document.querySelectorAll('.popup__input'));
+
+inputList.forEach(inputElement => {
+  inputElement.addEventListener("input", (event) => {
+
+  checkInputValidity(formElement, inputElement);
+  console.log(inputElement.validity.valid);
+
+      });
+});
+
+
+const showInputError = (inputElement, errorMessage) => {
+  console.log(inputElement.name, errorMessage);
+
+  const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
+
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
+};
+
+
+
+const HideInputError = (inputElement) => {
+  const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
+
+  errorElement.textContent = '';
+  errorElement.classList.remove('popup__input-error_active');
+};
+
+
+
+
+const checkInputValidity = (formElement, inputElement) => {
+  console.log(formElement, inputElement);
+  ;
+  const isInputNotValid = !inputElement.validity.valid;
+  
+  
+
+  if (isInputNotValid) {
+
+    const errorMessage = inputElement.validationMessage;
+
+    showInputError(inputElement, errorMessage);
+  }
+
+  else {
+
+    hideInputError(formElement, inputElement);
+  };
+
+
+
+  console.log(isInputNotValid);
+};
+
+
+
+
+const setEventListenners = (formElement) => {
+
+
+};
+
+
+
+const enableValidation = () => {
+
+  
+  
+};
+
+
+enableValidation();
