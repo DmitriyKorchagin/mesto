@@ -166,16 +166,16 @@ const inputList = Array.from(document.querySelectorAll('.popup__input'));
 inputList.forEach(inputElement => {
   inputElement.addEventListener("input", (event) => {
 
-  checkInputValidity(formElement, inputElement);
+  checkInputValidity(inputElement);
   console.log(inputElement.validity.valid);
+  
 
       });
 });
 
 
 const showInputError = (inputElement, errorMessage) => {
-  console.log(inputElement.name, errorMessage);
-
+  
   const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
 
   errorElement.textContent = errorMessage;
@@ -184,9 +184,11 @@ const showInputError = (inputElement, errorMessage) => {
 
 
 
-const HideInputError = (inputElement) => {
-  const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
-
+const hideInputError = (inputElement) => {
+  console.log(inputElement);
+  
+const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
+console.log(errorElement);
   errorElement.textContent = '';
   errorElement.classList.remove('popup__input-error_active');
 };
@@ -194,9 +196,8 @@ const HideInputError = (inputElement) => {
 
 
 
-const checkInputValidity = (formElement, inputElement) => {
-  console.log(formElement, inputElement);
-  ;
+const checkInputValidity = (inputElement) => {
+  
   const isInputNotValid = !inputElement.validity.valid;
   
   
@@ -210,7 +211,7 @@ const checkInputValidity = (formElement, inputElement) => {
 
   else {
 
-    hideInputError(formElement, inputElement);
+    hideInputError(inputElement);
   };
 
 
@@ -225,6 +226,8 @@ const setEventListenners = (formElement) => {
 
 
 };
+
+
 
 
 
