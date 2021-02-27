@@ -11,7 +11,7 @@ const jobInput = popupForm.querySelector(".popup__input_job");
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
 const closeButtonEditForm = document.querySelector(".popup__close-button_edit-form");
-const popupCardForm = document.querySelector(".popup-form-place");
+//const popupCardForm = document.querySelector(".popup-form-place");
 const cardImage = document.querySelector(".element__image");
 const cardTitle = document.querySelector(".element__title");
 const likeButton = document.querySelector(".element__group");
@@ -59,11 +59,13 @@ const initialCards = [
 ];
 
 // заполение form profile текущими значениями
+
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   popupToggle(popupProfile);
+  
 };
 
 // one toggle for popups//
@@ -150,3 +152,86 @@ popupImage.addEventListener("click", (event) => {
 
 renderInitialCards();
 fillInputValue(popupProfile);
+
+
+//valid
+
+// const popupForm = popupProfile.querySelector(".popup__container");
+const popupInput = document.getElementById('text-name-input');
+const inputList = Array.from(document.querySelectorAll('.popup__input'));
+const buttonElement = document.querySelector('.popup__submit');
+const formList = Array.from(document.querySelectorAll('.popup__container'));
+
+
+inputList.forEach(inputElement => {
+  inputElement.addEventListener("input", (event) => {
+
+  checkInputValidity(inputElement);
+  toggleButtonState(inputList, buttonElement);
+  });
+});
+
+
+const showInputError = (inputElement, errorMessage) => {
+  
+  const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
+
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
+};
+
+
+
+const hideInputError = (inputElement) => {
+  
+  
+const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
+
+  errorElement.textContent = '';
+  errorElement.classList.remove('popup__input-error_active');
+};
+
+
+
+
+const checkInputValidity = (inputElement) => {
+    const isInputNotValid = !inputElement.validity.valid;
+  
+  if (isInputNotValid) {
+    const errorMessage = inputElement.validationMessage;
+
+    showInputError(inputElement, errorMessage);
+  }
+  else {
+    hideInputError(inputElement);
+  };
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+
+  const hasNotValidInput = inputList.some(inputElement => !inputElement.validity.valid);
+  console.log(inputElement.validity.valid);
+  if (hasNotValidInput) {
+
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add('popup__submit_inactive');
+
+  } 
+    else {
+
+      buttonElement.removeAttribute('disabled');
+      buttonElement.classList.remove('popup__submit_inactive');
+  }
+
+  };
+
+
+  
+  
+const enableValidation = () => {
+  
+  
+};
+
+
+// enableValidation();
