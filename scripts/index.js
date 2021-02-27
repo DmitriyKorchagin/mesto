@@ -11,7 +11,7 @@ const jobInput = popupForm.querySelector(".popup__input_job");
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
 const closeButtonEditForm = document.querySelector(".popup__close-button_edit-form");
-const popupCardForm = document.querySelector(".popup-form-place");
+//const popupCardForm = document.querySelector(".popup-form-place");
 const cardImage = document.querySelector(".element__image");
 const cardTitle = document.querySelector(".element__title");
 const likeButton = document.querySelector(".element__group");
@@ -65,6 +65,7 @@ const handleFormSubmit = (evt) => {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   popupToggle(popupProfile);
+  
 };
 
 // one toggle for popups//
@@ -128,7 +129,7 @@ popupProfile.addEventListener("click", (event) => {
   }
 });
 
-// popupForm.addEventListener("submit", handleFormSubmit);
+popupForm.addEventListener("submit", handleFormSubmit);
 editButton.addEventListener('click', () => popupToggle(popupProfile));
 closeButton.addEventListener("click", () => popupToggle(popupProfile));
 closeButtonEditForm.addEventListener("click", () => popupToggle(popupPlace));
@@ -153,24 +154,21 @@ renderInitialCards();
 fillInputValue(popupProfile);
 
 
-
-
-
 //valid
+
 // const popupForm = popupProfile.querySelector(".popup__container");
-const profileSubmitButton = document.querySelector('.popup__submit');
 const popupInput = document.getElementById('text-name-input');
-const formList = Array.from(document.querySelectorAll('.popup__container'));
 const inputList = Array.from(document.querySelectorAll('.popup__input'));
+const buttonElement = document.querySelector('.popup__submit');
+const formList = Array.from(document.querySelectorAll('.popup__container'));
+
 
 inputList.forEach(inputElement => {
   inputElement.addEventListener("input", (event) => {
 
   checkInputValidity(inputElement);
-  console.log(inputElement.validity.valid);
-  
-
-      });
+  toggleButtonState(inputList, buttonElement);
+  });
 });
 
 
@@ -185,10 +183,10 @@ const showInputError = (inputElement, errorMessage) => {
 
 
 const hideInputError = (inputElement) => {
-  console.log(inputElement);
+  
   
 const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
-console.log(errorElement);
+
   errorElement.textContent = '';
   errorElement.classList.remove('popup__input-error_active');
 };
@@ -197,45 +195,43 @@ console.log(errorElement);
 
 
 const checkInputValidity = (inputElement) => {
+    const isInputNotValid = !inputElement.validity.valid;
   
-  const isInputNotValid = !inputElement.validity.valid;
-  
-  
-
   if (isInputNotValid) {
-
     const errorMessage = inputElement.validationMessage;
 
     showInputError(inputElement, errorMessage);
   }
-
   else {
-
     hideInputError(inputElement);
+  };
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+
+  const hasNotValidInput = inputList.some(inputElement => !inputElement.validity.valid);
+  console.log(inputElement.validity.valid);
+  if (hasNotValidInput) {
+
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add('popup__submit_inactive');
+
+  } 
+    else {
+
+      buttonElement.removeAttribute('disabled');
+      buttonElement.classList.remove('popup__submit_inactive');
+  }
+
   };
 
 
-
-  console.log(isInputNotValid);
-};
-
-
-
-
-const setEventListenners = (formElement) => {
-
-
-};
-
-
-
-
-
+  
+  
 const enableValidation = () => {
-
   
   
 };
 
 
-enableValidation();
+// enableValidation();
