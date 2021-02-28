@@ -8,7 +8,7 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 1.2;
-    margin-top: 48px;
+    margin-top: 31px;
     border-radius: 2px;
     cursor: pointer;
     border: none;
@@ -16,8 +16,21 @@
 
 .popup__submit:hover {
     opacity: 0.8;
-    transition: 0, 4 ease;
+    transition: 0,4 ease;
 }
+
+.popup__submit:disabled {
+    background-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    pointer-events: none;
+    color: black;
+    opacity: .2;
+    border: 1px solid black;
+}
+
+
 
 @media screen and (max-width: 780px) {
     .popup__submit {
