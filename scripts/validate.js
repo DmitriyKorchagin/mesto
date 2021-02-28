@@ -1,93 +1,79 @@
-const showInputError = (inputElement, errorMessage) => {
-    console.log(inputElement.name, errorMessage);
+//функц отображения ошибки
+const showInputError = (inputElement, errorMessage, formSelector, inputErrorClass, errorClass) => {
+    
+    const errorElement = inputElement.closest(formSelector).querySelector(inputErrorClass);
 
-       const errorElement = inputElement.closest('.popup__container').querySelector('.popup__input-error');
-
-           errorElement.textContent = errorMessage;
-           errorElement.classList.add('popup__input-error_active');
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add(errorClass);
 };
 
-const hideInputError = (inputElement) => {
+//функц скрытия ошибки
+const hideInputError = (inputElement, formSelector, inputErrorClass, errorClass) => {
 
     const errorElement = inputElement
-        .closest('.popup__container')
-        .querySelector('.popup__input-error');
+        .closest(formSelector)
+        .querySelector(inputErrorClass);
 
     errorElement.textContent = '';
-    errorElement.classList.remove('popup__input-error_active');
-
+    errorElement.classList.remove(errorClass);
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+// функция валидации формы
+const checkInputValidity = (formElement, inputElement, formSelector, inputErrorClass, errorClass) => {
     const isInputNotValid = !inputElement.validity.valid;
 
     if (isInputNotValid) {
         const errorMessage = inputElement.validationMessage;
-        showInputError(inputElement, errorMessage)
+        showInputError(inputElement, errorMessage, formSelector, inputErrorClass, errorClass)
     } else {
-        hideInputError(inputElement)
+        hideInputError(inputElement, formSelector, inputErrorClass, errorClass)
     }
-    //console.log(isInputNotValid);
 };
 
+// переключение состояни submit  
 const toggleButtonState = (inputList, buttonElement) => {
     const hasNotValidInput = inputList.some(inputElement => !inputElement.validity.valid);
-    console.log(buttonElement);
-
+    
     if (hasNotValidInput) {
         buttonElement.setAttribute('disabled', true);
-        buttonElement.classList.add('popup__submit_inactive');
-
-    }
-
-    else {
+    } else {
     buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove('popup__submit_inactive');
 }
 
 };
 
 
-const setEventListeners = (formElement, inputSelector) => {
+const setEventListeners = (formElement, inputSelector, submitButtonSelector, formSelector, inputErrorClass, errorClass) => {
 
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-    const buttonElement = formElement.querySelector('.popup__submit');
-
+    const buttonElement = formElement.querySelector(submitButtonSelector);
     const inputListIterator = (inputElement) => {
         const handleInput = () => {
-            checkInputValidity(formElement, inputElement);
+            checkInputValidity(formElement, inputElement, formSelector, inputErrorClass, errorClass);
             toggleButtonState(inputList, buttonElement);
-            console.log(buttonElement);
         }
-
         inputElement.addEventListener('input', handleInput);
-
     }
-
     inputList.forEach(inputListIterator)
     toggleButtonState(inputList, buttonElement);
 };
 
-function popupEscClose (evt) {
-    if(evt.key === "Escape") {
-        console.log(evt);
-        popupToggle();
-    }
-}
-
-
-
+// настройки enableValidation
 const enableValidation =({
-    formSelector, inputSelector
+    formSelector, inputSelector, submitButtonSelector, inputErrorClass, errorClass
 }) => {
     const formList = Array.from(document.querySelectorAll(formSelector));
 
     formList.forEach((formList) => {
-        setEventListeners(formList, inputSelector)
+        setEventListeners(formList, inputSelector, submitButtonSelector, formSelector, inputErrorClass, errorClass)
     });
 };
 
+// включение валидации вызовом enableValidation
 enableValidation({
     formSelector: ".popup__container",
     inputSelector: ".popup__input",
+    submitButtonSelector: '.popup__submit',
+    inputErrorClass: '.popup__input-error',
+    errorClass: 'popup__input-error_active'
 });

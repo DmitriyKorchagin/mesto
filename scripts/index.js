@@ -72,9 +72,15 @@ const handleFormSubmit = (evt) => {
 //function popupToggle(element) {
 //  element.classList.toggle('popup_opened');
 //  }
-  function popupOpened(element) {
+
+
+//функция открытия popup
+
+function popupOpened(element) {
     element.classList.add('popup_opened');
   }
+
+//функция закрытия popup
 
 function popupClose(element) {
   element.classList.remove('popup_opened');
@@ -159,11 +165,7 @@ popupImage.addEventListener("click", (event) => {
   }
 });
 
-renderInitialCards();
-fillInputValue(popupProfile);
-
-
-
+//слушатель закрытие popup через esc 
 document.addEventListener('keydown', function (evt) {
   if (evt.key === "Escape") {
     console.log(evt);
@@ -184,6 +186,13 @@ document.addEventListener('keydown', function (evt) {
     popupClose(popupImage);
   }
 });
+
+renderInitialCards();
+fillInputValue(popupProfile);
+
+
+
+
 
 
 
