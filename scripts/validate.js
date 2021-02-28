@@ -61,12 +61,19 @@ const setEventListeners = (formElement, inputSelector) => {
         }
 
         inputElement.addEventListener('input', handleInput);
+
     }
 
     inputList.forEach(inputListIterator)
     toggleButtonState(inputList, buttonElement);
 };
 
+function popupEscClose (evt) {
+    if(evt.key === "Escape") {
+        console.log(evt);
+        popupToggle();
+    }
+}
 
 
 
