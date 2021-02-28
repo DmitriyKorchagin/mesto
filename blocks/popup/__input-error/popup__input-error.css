@@ -3,7 +3,8 @@
     opacity: 0;
     font-weight: normal;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 1.2;
     color: #FF0000;
-    margin-bottom: 13px;
+    position: absolute;
+    top: calc(100% + 5px);
 }
