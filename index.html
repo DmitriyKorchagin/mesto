@@ -37,18 +37,17 @@
   <section class="popup popup_profile">
     <form class="popup__container" name="add-profile" novalidate>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <div class="popup__input-container">
+      
         <input type="text" class="popup__input popup__input_name" name="popup-input-name" id="text-name-input"
           required="required" minlength="2" maxlength="40" />
-        <span class="popup__input-error text-profile-input-error" id="text-name-input-error">Вы пропустили это
+        <span class="popup__input-error" id="text-name-input-error">Вы пропустили это
           поле.</span>
-      </div>
-      <div class="popup__input-container">
+      
         <input type="text" class="popup__input popup__input_job" name="popup-input-job" id="text-job-input"
           required="required" minlength="2" maxlength="200" />
-        <span class="popup__input-error text-profile-input-error" id="text-job-input-error">Вы
+        <span class="popup__input-error" id="text-job-input-error">Вы
           пропустили это поле.</span>
-      </div>
+      
       <input type="submit" class="popup__submit" name="profile_submit" value="Сохранить" />
       <button type="button" class="popup__close-button"></button>
     </form>
@@ -56,26 +55,25 @@
   <section class="popup popup_place">
     <form class="popup__container" name="add-place popup-form-place" novalidate>
       <h2 class="popup__title">Новое место</h2>
-      <div class="popup__input-container">
-        <input type="text" class="popup__input popup__input_place" placeholder="Название" name="popup-input-place"
+              <input type="text" class="popup__input popup__input_place" placeholder="Название" name="popup-input-place"
           required="required" minlength="2" maxlength="30" />
         <span class="popup__input-error">Вы пропустили это поле.</span>
-      </div>
-      <div class="popup__input-container">
+      
+      
         <input type="url" class="popup__input popup__input_link" placeholder="Ссылка на картинку"
           name="popup-image-link" required="required" />
         <span class="popup__input-error">Введите адрес сайта.</span>
-      </div>
+      
       <input type="submit" class="popup__submit popup__submit_place" value="Сохранить" />
       <button type="button" class="popup__close-button popup__close-button_edit-form"></button>
     </form>
   </section>
   <section class="popup popup_image" id="popup_image">
-    <div class="popup__image-container">
+    
       <img src="#" alt="#" class="popup__image-scale" />
       <h2 class="popup__image-title"></h2>
       <button type="button" class="popup__close-button popup__close-button_image-scale"></button>
-    </div>
+    
   </section>
 
   <template class="element_template">
