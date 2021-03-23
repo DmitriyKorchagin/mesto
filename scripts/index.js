@@ -1,3 +1,7 @@
+import Card from './card.js' 
+
+
+
 //profile
 const popupProfile = document.querySelector(".popup_profile");
 const editButton = document.querySelector(".profile__edit-button");
@@ -10,8 +14,6 @@ const jobInput = popupForm.querySelector(".popup__input_job");
 //place
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
-//const closeButtonEditForm = document.querySelector(".popup__close-button_edit-form");
-//const popupCardForm = document.querySelector(".popup-form-place");
 const cardImage = document.querySelector(".element__image");
 const cardTitle = document.querySelector(".element__title");
 const likeButton = document.querySelector(".element__group");
@@ -96,22 +98,38 @@ const handleCardSubmit = evt => {
 }
 
 //create new card func 
-const createNewCard = (image, place) => {
-  const elementCard = elementTemplate.cloneNode(true);
-  const elementCardPhoto = elementCard.querySelector(".element__image");
-  const elementCardTitle = elementCard.querySelector(".element__title");
-  elementCardPhoto.src = image;
-  elementCardPhoto.alt = place;
-  elementCardTitle.textContent = place;
-  setListeners(elementCard);
+// const createNewCard = (image, place) => {
+//   const elementCard = elementTemplate.cloneNode(true);
+//   const elementCardPhoto = elementCard.querySelector(".element__image");
+//   const elementCardTitle = elementCard.querySelector(".element__title");
+//   elementCardPhoto.src = image;
+//   elementCardPhoto.alt = place;
+//   elementCardTitle.textContent = place;
+//   setListeners(elementCard);
   
-  return elementCard
-}
+//   return elementCard
+// }
 
 // render cards from arrey func
-function renderInitialCards () {
-  initialCards.forEach(item => elements.append(createNewCard(item.link, item.name)));
-}
+// function renderInitialCards () {
+//   initialCards.forEach(item => elements.append(createNewCard(item.link, item.name)));
+// }
+
+
+
+
+//render cards from arrey func
+initialCards.forEach((item) => {
+  const card = new Card(item, '.element_template');
+  const cardElement = card.createNewCard();
+  elements.prepend(cardElement);
+});
+
+
+
+
+
+
 
 //remove card from trash icon func
 function deleteCard(evt) {
@@ -124,6 +142,7 @@ function photoUpScale(evt) {
   popupImageTitle.textContent = evt.target.closest(".element").querySelector(".element__title").textContent;
   popupOpened(popupImage);
 }
+
 //Listeners for element card
 function setListeners (elementCard) {
   elementCard.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
@@ -148,12 +167,6 @@ const popups = document.querySelectorAll('.popup')
       });
 
 
-// popupProfile.addEventListener("click", (event) => {
-//   if (event.target === event.currentTarget) {
-//     popupClose(popupProfile);
-//   }
-// });
-
 popupForm.addEventListener("submit", handleFormSubmit);
 editButton.addEventListener('click', () => popupOpened(popupProfile));
 closeButton.addEventListener("click", () => popupClose(popupProfile));
@@ -163,17 +176,6 @@ popupImageContent.addEventListener("click", () => popupOpened(popupImage));
 imageCloseButton.addEventListener("click", () => popupClose(popupImage));
 popupPlace.addEventListener("submit", handleCardSubmit);
 
-// popupPlace.addEventListener("click", (event) => {
-//   if (event.target === event.currentTarget) {
-//     popupClose(popupPlace);
-//   }
-// });
-
-// popupImage.addEventListener("click", (event) => {
-//   if (event.target === event.currentTarget) {
-//     popupClose(popupImage);
-//   }
-// });
 
 //слушатель закрытие popup через esc 
 function closeByEscape(evt) {
@@ -184,33 +186,8 @@ function closeByEscape(evt) {
 }
 
 
-
-
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === "Escape") {
-//     console.log(evt);
-//     popupClose(popupProfile);
-//   }
-// });
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === "Escape") {
-//     console.log(evt);
-//     popupClose(popupPlace);
-//   }
-// });
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === "Escape") {
-//     console.log(evt);
-//     popupClose(popupImage);
-//   }
-// });
-
-renderInitialCards();
+// renderInitialCards();
 fillInputValue(popupProfile);
-
 
 
 
