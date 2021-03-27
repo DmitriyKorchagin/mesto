@@ -2,45 +2,53 @@ export default class FormValidator {
 
     constructor (validationSettings, formElement) {
         this._formElement = formElement;
-        this._validationSettings = validationSettings;
-        this._buttonElement = this._formElement.querySelector(this._validationSettings.submitButtonSelector);
-        this._inputList = Array.from(this._formElement.querySelectorAll(this._validationSettings.inputSelector));
+        this._inputSelector = validationSettings.inputSelector;
+        this._fieldSetSelector = validationSettings.fieldSetSelector;
+        this._formSelector = validationSettings.formSelector;
+        this._submitButtonSelector = validationSettings.submitButtonSelector;
+        this._inputErrorClass = validationSettings.inputErrorClass;
+        this._errorClass = validationSettings.errorClass;
+        this._popupTypeError = validationSettings.popupTypeError;
+        this._formLabelSelector = validationSettings.formLabelSelector;
+
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     }
 
 
-    //метод отображения ошибки
-    _showInputError = (inputElement, errorMessage) => {
+      //метод отображения ошибки
+    _showInputError () {
     
-        // const formSectionElement = inputElement.closest(formSelector);
-        const errorElement = this._formElement.querySelector(`${this._validationSettings.inputErrorClass}_type_${inputElement.name}`);
-        console.log(errorElement);
-            inputElement.classList.add(this._validationSettings.popupTypeError); 
-            errorElement.textContent = errorMessage;
-            errorElement.classList.add(this._validationSettings.errorClass); 
-    
+        const formSectionElement = this._inputElement.closest(this._formLabelSelector);
+        this._errorElement = formSectionElement.querySelector(this._inputErrorClass)
+        this._errorElement.textContent = this._inputElement.validationMessage;
+        this._errorElement.classList.add(this._errorClass);
+        this._inputElement.classList.add(this.__popupTypeError);
+
     };
 
     //метод скрытия ошибки
-    _hideInputError = (inputElement) => {
+    _hideInputError () {
     
-        // const formSectionElement = inputElement.closest(formSelector);
-        const errorElement = this._formElement.querySelector(`${this._validationSettings.inputErrorClass}_type_${inputElement.name}`);
-
-            inputElement.classList.remove(this._validationSettings.popupTypeError); 
-            errorElement.textContent = '';
-            errorElement.classList.remove(this._validationSettings.errorClass); 
+        const formSectionElement = this._inputElement.closest(this._formLabelSelector);
+        this._errorElement = formSectionElement.querySelector(this._inputErrorClass)
+        this._errorElement.textContent = '';
+        this._errorElement.classList.remove(this._errorClass);
+        this._inputElement.classList.remove(this.__popupTypeError);
     
     };
 
     // функция валидации формы
-    _checkInputValidity = (inputElement) => {
-        
-        if (!inputElement.validity.valid) {
-            this._showInputError(inputElement, inputElement.validationMessage)
+    _checkInputValidity (inputElement) {
+        this._inputElement = inputElement;
+        if (!this._inputElement.validity.valid) {
+            this._errorMessage = inputElement.validationMessage;
+            this._showInputError();
         } else {
-            this._hideInputError(inputElement)
+            this._hideInputError()
         }
     };
+
 
     // метод переключение состояния submit 
     _toggleButtonState = () => {
@@ -58,7 +66,7 @@ export default class FormValidator {
     _setEventListeners () {
 
         this._inputList.forEach((inputElement) => {
-            inputElement.classList.remove(this._validationSettings.inputErrorClass)
+            inputElement.classList.remove(this._inputErrorClass)
             inputElement.addEventListener('input', () => {
             this._checkInputValidity(inputElement)
             this._toggleButtonState()
@@ -66,21 +74,12 @@ export default class FormValidator {
     });
     };
 
-    enableValidation() {
-
-        const formSetList = Array.from(this._formElement.querySelectorAll(this._validationSettings.fieldSetSelector));
-        
-        formSetList.forEach(() => this._setEventListeners());
+    enableValidation () {
+        this._formElement.addEventListener('submit', (event) => {
+        event.preventDefault();
+        this._toggleButtonState();
+    })
+        this._setEventListeners();
     }
-
-    // enableValidation () {
-    //     this._formElement.addEventListener('submit', (event) => {
-    //       event.preventDefault();
-    //       this._toggleButtonState();
-    //     })
-    //     this._setEventListeners();
-    //   }
-
-
 }
 
