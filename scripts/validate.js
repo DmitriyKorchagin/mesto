@@ -82,20 +82,3 @@ enableValidation({
     popupTypeError: "popup__input_type-error"
 });
 
-// class formValidator {
-//     constructor (config, formElement) {
-//         this._formElement = formElement;
-//         this._inputSelector = config.inputSelector;
-//         this._formSelector = config.inputSelector;
-//         this._submitButtonSelector = config.submitButtonSelector;
-//         this._inputErrorClass = config.inputErrorClass;
-//         this._errorClass = config.errorClass;
-//         this._popupTypeError = config.popupTypeError;
-//     }
-
-//     enableValidation() {
-//         this._formElement.addEventListener('submit', (event) => {
-//             event.preventDefault();
-//         });
-//     }
-// }
