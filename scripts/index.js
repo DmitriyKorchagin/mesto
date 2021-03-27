@@ -13,9 +13,9 @@ const jobInput = popupForm.querySelector(".popup__input_job");
 //place const
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
-const cardImage = document.querySelector(".element__image");
-const cardTitle = document.querySelector(".element__title");
-const likeButton = document.querySelector(".element__group");
+// const cardImage = document.querySelector(".element__image");
+// const cardTitle = document.querySelector(".element__title");
+// const likeButton = document.querySelector(".element__group");
 const elements = document.querySelector(".elements");
 const placeTitleInput = document.querySelector(".popup__input_place");
 const imageLinkInput = document.querySelector(".popup__input_link");
@@ -24,7 +24,7 @@ const popupImage = document.getElementById("popup_image");
 const imageCloseButton = document.querySelector(".popup__close-button_image-scale");
 const popupImageTitle = document.querySelector(".popup__image-title");
 const popupImageContent = document.querySelector(".popup__image-scale");
-const elementTemplate = document.querySelector(".element_template").content;
+// const elementTemplate = document.querySelector(".element_template").content;
 //validation set
 const validationSetting = {
   formSelector: ".popup__container",
@@ -106,15 +106,6 @@ function fillInputValue() {
     jobInput.value = profileJob.textContent;
   }
 
-//create card from popup func
-// const handleCardSubmit = evt => {
-//   evt.preventDefault();
-//   elements.prepend(createNewCard(imageLinkInput.value, placeTitleInput.value));
-//   (newCard.generateCard())
-//   popupClose(popupPlace);
-//   imageLinkInput.value = "";
-//   placeTitleInput.value = "";
-// }
 
 function handleCardSubmit(evt) {
 
@@ -128,22 +119,6 @@ function handleCardSubmit(evt) {
 }
 
 
-//create new card func 
-
-// const createNewCard = (image, place) => {
-//   const elementCard = elementTemplate.cloneNode(true);
-//   const elementCardPhoto = elementCard.querySelector(".element__image");
-//   const elementCardTitle = elementCard.querySelector(".element__title");
-//   elementCardPhoto.src = image;
-//   elementCardPhoto.alt = place;
-//   elementCardTitle.textContent = place;
-//   setListeners(elementCard);
-  
-//   return elementCard
-// }
-
-
-
 //render cards from arrey func
 initialCards.forEach((item) => {
   const card = new Card(item, '.element_template', photoUpScale);
@@ -152,23 +127,29 @@ initialCards.forEach((item) => {
 
 });
 
-
 //remove card from trash icon func
 function deleteCard(evt) {
   evt.target.closest(".element").remove();
 }
 
+// function photoUpScale(evt) {
+//   popupImageContent.src = evt.target.closest(".element__image").src;
+//   popupImageTitle.textContent = evt.target.closest(".element").querySelector(".element__title").textContent;
+//   popupOpened(popupImage);
+// }
+
 // Image Up Scale func
-function photoUpScale(evt) {
-  popupImageContent.src = evt.target.closest(".element__image").src;
-  popupImageTitle.textContent = evt.target.closest(".element").querySelector(".element__title").textContent;
+function photoUpScale(name, link) {
+  popupImageContent.src = link;
+  popupImageContent.alt = `Изображение ${name}`;
+  popupImageTitle.textContent = name;
   popupOpened(popupImage);
 }
 
 //Listeners for element card
 function setListeners (elementCard) {
   elementCard.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
-  elementCard.querySelector(".element__image").addEventListener("click", photoUpScale);
+  // elementCard.querySelector(".element__image").addEventListener("click", photoUpScale);
   elementCard.querySelector(".element__group").addEventListener("click", function (evt) {
     evt.target.classList.toggle("element__group_active");
     });
@@ -206,8 +187,6 @@ function closeByEscape(evt) {
   }
 }
 
-
-// renderInitialCards();
 fillInputValue(popupProfile);
 
 

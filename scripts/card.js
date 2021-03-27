@@ -1,10 +1,11 @@
 export default class Card {
 
-    constructor (data, templateSelector, openPopupImg) {
+    constructor (data, templateSelector, photoUpScale) {
         this._name = data.name;
         this._link = data.link;
         this._selector = templateSelector;
-        // this._openPopupImg = openPopupImg;
+        this._photoUpScale = photoUpScale;
+        
     }
 
 
@@ -32,6 +33,7 @@ export default class Card {
     _setEventListeners() {
         this._elementsCard.elementCardTrashButton.addEventListener('click', () => this._deleteCard());
         this._elementsCard.elementCardLikeButton.addEventListener('click', () => this._likeCard());
+        this._elementsCard.elementCardPhoto.addEventListener('click', () => this._photoUpScale(this._name, this._link))
 
     }
 
