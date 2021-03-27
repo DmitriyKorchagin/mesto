@@ -1,4 +1,6 @@
-import Card from './card.js' 
+import Card from './card.js';
+import FormValidator from './FormValidator.js';
+
 
 
 
@@ -12,6 +14,7 @@ const popupForm = popupProfile.querySelector(".popup__container");
 const nameInput = popupForm.querySelector(".popup__input_name");
 const jobInput = popupForm.querySelector(".popup__input_job");
 //place
+
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
 const cardImage = document.querySelector(".element__image");
@@ -26,6 +29,13 @@ const imageCloseButton = document.querySelector(".popup__close-button_image-scal
 const popupImageTitle = document.querySelector(".popup__image-title");
 const popupImageContent = document.querySelector(".popup__image-scale");
 const elementTemplate = document.querySelector(".element_template").content;
+
+
+//Работа по созданию экземпляров классов валидации попапов и включение валидации
+const popupProfileFormValidator = new FormValidator({validationSettings}, popupProfile);
+const popupCardFormValidator = new FormValidator({validationSettings}, popupPlace);
+popupProfileFormValidator.enableValidation();
+popupCardFormValidator.enableValidation();
 
 const initialCards = [
   {
@@ -60,6 +70,8 @@ const initialCards = [
   },
 ];
 
+
+
 // заполение form profile текущими значениями
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
@@ -82,7 +94,7 @@ function popupClose(element) {
   document.removeEventListener('keydown', closeByEscape);
 }
 
-//функция редкатирования прфиля
+//функция редкатирования профиля
 function fillInputValue() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
@@ -98,24 +110,17 @@ const handleCardSubmit = evt => {
 }
 
 //create new card func 
-// const createNewCard = (image, place) => {
-//   const elementCard = elementTemplate.cloneNode(true);
-//   const elementCardPhoto = elementCard.querySelector(".element__image");
-//   const elementCardTitle = elementCard.querySelector(".element__title");
-//   elementCardPhoto.src = image;
-//   elementCardPhoto.alt = place;
-//   elementCardTitle.textContent = place;
-//   setListeners(elementCard);
+const createNewCard = (image, place) => {
+  const elementCard = elementTemplate.cloneNode(true);
+  const elementCardPhoto = elementCard.querySelector(".element__image");
+  const elementCardTitle = elementCard.querySelector(".element__title");
+  elementCardPhoto.src = image;
+  elementCardPhoto.alt = place;
+  elementCardTitle.textContent = place;
+  setListeners(elementCard);
   
-//   return elementCard
-// }
-
-// render cards from arrey func
-// function renderInitialCards () {
-//   initialCards.forEach(item => elements.append(createNewCard(item.link, item.name)));
-// }
-
-
+  return elementCard
+}
 
 
 //render cards from arrey func
@@ -124,10 +129,6 @@ initialCards.forEach((item) => {
   const cardElement = card.createNewCard();
   elements.prepend(cardElement);
 });
-
-
-
-
 
 
 
@@ -170,7 +171,6 @@ const popups = document.querySelectorAll('.popup')
 popupForm.addEventListener("submit", handleFormSubmit);
 editButton.addEventListener('click', () => popupOpened(popupProfile));
 closeButton.addEventListener("click", () => popupClose(popupProfile));
-//closeButtonEditForm.addEventListener("click", () => popupClose(popupPlace));
 addButton.addEventListener("click", () => popupOpened(popupPlace));
 popupImageContent.addEventListener("click", () => popupOpened(popupImage));
 imageCloseButton.addEventListener("click", () => popupClose(popupImage));
@@ -191,6 +191,15 @@ fillInputValue(popupProfile);
 
 
 
+const validationSettings = {
+  formSelector: ".popup__container",
+  fieldSetSelector: "popup__set",
+  inputSelector: ".popup__input",
+  submitButtonSelector: '.popup__submit',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__input-error_active',
+  popupTypeError: "popup__input_type-error"
+}
 
 
 

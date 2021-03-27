@@ -4,7 +4,7 @@ export default class Card {
         this._name = data.name;
         this._link = data.link;
         this._selector = templateSelector;
-        this._openPopupImg = openPopupImg;
+        // this._openPopupImg = openPopupImg;
     }
 
 
@@ -29,7 +29,7 @@ export default class Card {
 
 
 
-    setEventListeners() {
+    _setEventListeners() {
         this._elementsCard.elementCardTrashButton.addEventListener('click', () => this._deleteCard());
         this._elementsCard.elementCardLikeButton.addEventListener('click', () => this._likeCard());
 
@@ -41,12 +41,13 @@ export default class Card {
         this._element = null;
     }
 
-    likeCard() {
+    _likeCard() {
         this._elementsCard.elementCardLikeButton.classlist.toggle('element__group_active')
     
     }
 
     createNewCard () {
+        
         this._element = this._getTemplateCard();
         this._elementsCard = this._getElementsCard();
 
@@ -54,10 +55,11 @@ export default class Card {
         this._elementsCard.elementCardTitle.textContent = this._name;
         this._elementsCard.elementCardTitle.alt = this._name;
         
-    
-        this.setEventListeners();
+        
+        this._setEventListeners();
 
         return this._element;
+        
 
     }
 
