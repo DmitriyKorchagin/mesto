@@ -1,10 +1,7 @@
 import Card from './card.js';
 import FormValidator from './FormValidator.js';
 
-
-
-
-//profile
+//profile const
 const popupProfile = document.querySelector(".popup_profile");
 const editButton = document.querySelector(".profile__edit-button");
 const closeButton = document.querySelector(".popup__close-button");
@@ -13,8 +10,7 @@ const profileJob = document.querySelector(".profile__job");
 const popupForm = popupProfile.querySelector(".popup__container");
 const nameInput = popupForm.querySelector(".popup__input_name");
 const jobInput = popupForm.querySelector(".popup__input_job");
-//place
-
+//place const
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
 const cardImage = document.querySelector(".element__image");
@@ -23,20 +19,31 @@ const likeButton = document.querySelector(".element__group");
 const elements = document.querySelector(".elements");
 const placeTitleInput = document.querySelector(".popup__input_place");
 const imageLinkInput = document.querySelector(".popup__input_link");
-//image
+//image const
 const popupImage = document.getElementById("popup_image");
 const imageCloseButton = document.querySelector(".popup__close-button_image-scale");
 const popupImageTitle = document.querySelector(".popup__image-title");
 const popupImageContent = document.querySelector(".popup__image-scale");
 const elementTemplate = document.querySelector(".element_template").content;
+//validation set
+const validationSetting = {
+  formSelector: ".popup__container",
+  fieldSetSelector: "popup__set",
+  inputSelector: ".popup__input",
+  submitButtonSelector: '.popup__submit',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__input-error_active',
+  popupTypeError: 'popup__input_type-error',
+  formLabelSelector: '.popup__field'
+};
 
-
-//Работа по созданию экземпляров классов валидации попапов и включение валидации
-const popupProfileFormValidator = new FormValidator({validationSettings}, popupProfile);
-const popupCardFormValidator = new FormValidator({validationSettings}, popupPlace);
+//созданиe экземпляров классов валидации попапов и включение
+const popupProfileFormValidator = new FormValidator(validationSetting, popupProfile);
+const popupCardFormValidator = new FormValidator(validationSetting, popupPlace);
 popupProfileFormValidator.enableValidation();
 popupCardFormValidator.enableValidation();
 
+//card arrey
 const initialCards = [
   {
     name: "Архыз",
@@ -71,7 +78,6 @@ const initialCards = [
 ];
 
 
-
 // заполение form profile текущими значениями
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
@@ -101,35 +107,50 @@ function fillInputValue() {
   }
 
 //create card from popup func
-const handleCardSubmit = evt => {
+// const handleCardSubmit = evt => {
+//   evt.preventDefault();
+//   elements.prepend(createNewCard(imageLinkInput.value, placeTitleInput.value));
+//   (newCard.generateCard())
+//   popupClose(popupPlace);
+//   imageLinkInput.value = "";
+//   placeTitleInput.value = "";
+// }
+
+function handleCardSubmit(evt) {
+
   evt.preventDefault();
-  elements.prepend(createNewCard(imageLinkInput.value, placeTitleInput.value));
+  const newCard = new Card({name:placeTitleInput.value, link:imageLinkInput.value},'.element_template', photoUpScale);
+  elements.prepend(newCard.createNewCard());
   popupClose(popupPlace);
   imageLinkInput.value = "";
   placeTitleInput.value = "";
+  
 }
 
+
 //create new card func 
-const createNewCard = (image, place) => {
-  const elementCard = elementTemplate.cloneNode(true);
-  const elementCardPhoto = elementCard.querySelector(".element__image");
-  const elementCardTitle = elementCard.querySelector(".element__title");
-  elementCardPhoto.src = image;
-  elementCardPhoto.alt = place;
-  elementCardTitle.textContent = place;
-  setListeners(elementCard);
+
+// const createNewCard = (image, place) => {
+//   const elementCard = elementTemplate.cloneNode(true);
+//   const elementCardPhoto = elementCard.querySelector(".element__image");
+//   const elementCardTitle = elementCard.querySelector(".element__title");
+//   elementCardPhoto.src = image;
+//   elementCardPhoto.alt = place;
+//   elementCardTitle.textContent = place;
+//   setListeners(elementCard);
   
-  return elementCard
-}
+//   return elementCard
+// }
+
 
 
 //render cards from arrey func
 initialCards.forEach((item) => {
-  const card = new Card(item, '.element_template');
+  const card = new Card(item, '.element_template', photoUpScale);
   const cardElement = card.createNewCard();
   elements.prepend(cardElement);
-});
 
+});
 
 
 //remove card from trash icon func
@@ -188,18 +209,6 @@ function closeByEscape(evt) {
 
 // renderInitialCards();
 fillInputValue(popupProfile);
-
-
-
-const validationSettings = {
-  formSelector: ".popup__container",
-  fieldSetSelector: "popup__set",
-  inputSelector: ".popup__input",
-  submitButtonSelector: '.popup__submit',
-  inputErrorClass: '.popup__input-error',
-  errorClass: 'popup__input-error_active',
-  popupTypeError: "popup__input_type-error"
-}
 
 
 
