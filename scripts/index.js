@@ -147,13 +147,13 @@ function photoUpScale(name, link) {
 }
 
 //Listeners for element card
-function setListeners (elementCard) {
-  elementCard.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
-  // elementCard.querySelector(".element__image").addEventListener("click", photoUpScale);
-  elementCard.querySelector(".element__group").addEventListener("click", function (evt) {
-    evt.target.classList.toggle("element__group_active");
-    });
-}
+// function setListeners (elementCard) {
+//   elementCard.querySelector(".element__trash-icon").addEventListener("click", deleteCard);
+//   // elementCard.querySelector(".element__image").addEventListener("click", photoUpScale);
+//   elementCard.querySelector(".element__group").addEventListener("click", function (evt) {
+//     evt.target.classList.toggle("element__group_active");
+//     });
+// }
 
 //функция закрытия модальных окон
 const popups = document.querySelectorAll('.popup')

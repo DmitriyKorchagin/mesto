@@ -44,7 +44,7 @@ export default class Card {
     }
 
     _likeCard() {
-        this._elementsCard.elementCardLikeButton.classlist.toggle('element__group_active')
+        this._elementsCard.elementCardLikeButton.classList.toggle('element__group_active')
     
     }
 
