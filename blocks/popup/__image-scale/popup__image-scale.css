@@ -3,4 +3,5 @@
     max-height: 75vh;
     display: block;
     border: 0px;
+    position: relative;
 }
