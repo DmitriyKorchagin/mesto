@@ -23,7 +23,7 @@ export default class FormValidator {
         this._errorElement = formSectionElement.querySelector(this._inputErrorClass)
         this._errorElement.textContent = this._inputElement.validationMessage;
         this._errorElement.classList.add(this._errorClass);
-        this._inputElement.classList.add(this.__popupTypeError);
+        this._inputElement.classList.add(this._popupTypeError);
 
     };
 
@@ -34,9 +34,15 @@ export default class FormValidator {
         this._errorElement = formSectionElement.querySelector(this._inputErrorClass)
         this._errorElement.textContent = '';
         this._errorElement.classList.remove(this._errorClass);
-        this._inputElement.classList.remove(this.__popupTypeError);
+        this._inputElement.classList.remove(this._popupTypeError);
     
     };
+
+    _hasInvalidInput () {
+        return this._inputList.some((inputElement) => {
+            return !inputElement.validity.valid
+        })
+    }
 
     // функция валидации формы
     _checkInputValidity (inputElement) {
@@ -73,6 +79,11 @@ export default class FormValidator {
         });
     });
     };
+
+    
+    setSubmitToInitial() {
+        this._formElement.querySelector(this._submitButtonSelector).setAttribute('disabled', true);
+    }
 
     enableValidation () {
         this._formElement.addEventListener('submit', (event) => {
