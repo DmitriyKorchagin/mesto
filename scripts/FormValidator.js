@@ -80,10 +80,10 @@ export default class FormValidator {
     });
     };
 
+    
     setSubmitToInitial() {
         this._formElement.querySelector(this._submitButtonSelector).setAttribute('disabled', true);
     }
-
 
     enableValidation () {
         this._formElement.addEventListener('submit', (event) => {

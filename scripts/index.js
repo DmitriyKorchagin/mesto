@@ -114,10 +114,7 @@ function handleAddCard () {
 function handleCardSubmit(evt) {
   evt.preventDefault();
   const newCard = new Card(
-    { name: placeTitleInput.value, link: imageLinkInput.value },
-    ".element_template",
-    photoUpScale
-  );
+    { name: placeTitleInput.value, link: imageLinkInput.value },".element_template", photoUpScale);
   elements.prepend(newCard.createNewCard());
   popupClose(popupPlace);
   imageLinkInput.value = "";
@@ -131,7 +128,7 @@ initialCards.forEach((item) => {
 });
 
 function createUserCard(item) {
-  const card = new Card(item, '.element_template');
+  const card = new Card(item, '.element_template', photoUpScale);
   const newCard = card.createNewCard();
   return newCard;
 };
