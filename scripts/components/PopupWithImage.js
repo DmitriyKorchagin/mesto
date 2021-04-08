@@ -9,7 +9,7 @@ export default class PopupWithImage extends Popup {
         };
 
 
-handleCardClick(name, link) {
+_photoUpScale(name, link) {
 
     super.openPopup();
     this._imageItem.src = link;

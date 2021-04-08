@@ -1,34 +1,13 @@
 import Card from "../scripts/components/card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import Section from "../scripts/components/Section";
-import PopupWithForm from "../scripts/components/PopupWithForm";
-import PopupWithImage from "../scripts/components/PopupWithImage";
-import UserInfo from "../scripts/components/UserInfo";
+import FormValidator from "../scripts/components/FormValidator.js";
+import Section from "../scripts/components/Section.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import UserInfo from '../scripts/components/UserInfo.js';
 
 
-//profile const
-const popupProfile = document.querySelector(".popup_profile");
-const editButton = document.querySelector(".profile__edit-button");
-const closeButton = document.querySelector(".popup__close-button");
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__job");
-const popupForm = popupProfile.querySelector(".popup__container");
-const nameInput = popupForm.querySelector(".popup__input_name");
-const jobInput = popupForm.querySelector(".popup__input_job");
-//place const
-const popupPlace = document.querySelector(".popup_place");
-const addButton = document.querySelector(".profile__add-button");
-const elements = document.querySelector(".elements");
-const placeTitleInput = document.querySelector(".popup__input_place");
-const imageLinkInput = document.querySelector(".popup__input_link");
-//image const
-const popupImage = document.getElementById("popup_image");
-const imageCloseButton = document.querySelector(
-  ".popup__close-button_image-scale"
-);
-const popupImageTitle = document.querySelector(".popup__image-title");
-const popupImageContent = document.querySelector(".popup__image-scale");
-
+import {validationSetting, initialCards, popupForm, editButton, closeButton, popupProfile, popupPlace
+} from '../scripts/utils/constants.js';
 
 
 //созданиe экземпляров классов валидации попапов и включение
@@ -40,39 +19,38 @@ const popupCardFormValidator = new FormValidator(validationSetting, popupPlace);
 popupProfileFormValidator.enableValidation();
 popupCardFormValidator.enableValidation();
 
-//card arrey
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+const popupImage = new PopupWithImage('.popup_image');
+
+
+//рендер карточек из массива
+function createCard(item, templateSelector) {
+  const newCard = new Card(item, templateSelector, popupImage._photoUpScale.bind(popupImage));
+
+  return newCard.createNewCard();
+}
+
+const cardsList = new Section({
+  data: initialCards,
+  renderer: item => {const makeCard = createCard(item, '.element_template');
+    cardsList.addItem(makeCard, true);
+  }
+},'.elements');
+
+cardsList.renderItems();
+
+//создание карточки пользователем
+const popupCard = new PopupWithForm ({
+  popupSelector: '.popup_place', handleFormSubmit: (inputValues) => {
+    const makeCard = createCard({name:inputValues.title, link:inputValues.link}, '.element_template');
+    cardsList.addItem(makeCard);
+    popupCard.closePopup();
+  }
+})
+
+
+
+
+
 
 // заполение form profile текущими значениями
 const handleFormSubmit = (evt) => {
@@ -95,38 +73,33 @@ function popupClose(element) {
 }
 
 //функция редкатирования профиля
-function fillInputValue() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-}
+// function fillInputValue() {
+//   nameInput.value = profileName.textContent;
+//   jobInput.value = profileJob.textContent;
+// }
 
-function handleAddCard () {
-  popupOpened(popupPlace)
-  popupCardFormValidator.setSubmitToInitial();
+// function handleAddCard () {
+//   popupOpened(popupPlace)
+//   popupCardFormValidator.setSubmitToInitial();
   
-}
+// }
 
-function handleCardSubmit(evt) {
-  evt.preventDefault();
-  const newCard = new Card(
-    { name: placeTitleInput.value, link: imageLinkInput.value },".element_template", photoUpScale);
-  elements.prepend(newCard.createNewCard());
-  popupClose(popupPlace);
-  imageLinkInput.value = "";
-  placeTitleInput.value = "";
-}
+// function handleCardSubmit(evt) {
+//   evt.preventDefault();
+//   const newCard = new Card(
+//     { name: placeTitleInput.value, link: imageLinkInput.value },".element_template", photoUpScale);
+//   elements.prepend(newCard.createNewCard());
+//   popupClose(popupPlace);
+//   imageLinkInput.value = "";
+//   placeTitleInput.value = "";
+// }
 
 
 //render cards from arrey func
-initialCards.forEach((item) => {
-  elements.prepend(createUserCard(item));
-});
+// initialCards.forEach((item) => {
+//   elements.prepend(createUserCard(item));
+// });
 
-function createUserCard(item) {
-  const card = new Card(item, '.element_template', photoUpScale);
-  const newCard = card.createNewCard();
-  return newCard;
-};
 
 // Image Up Scale func
 function photoUpScale(name, link) {
@@ -152,10 +125,10 @@ popups.forEach((popup) => {
 popupForm.addEventListener("submit", handleFormSubmit);
 editButton.addEventListener("click", () => popupOpened(popupProfile));
 closeButton.addEventListener("click", () => popupClose(popupProfile));
-addButton.addEventListener("click", () => handleAddCard());
-popupImageContent.addEventListener("click", () => popupOpened(popupImage));
-imageCloseButton.addEventListener("click", () => popupClose(popupImage));
-popupPlace.addEventListener("submit", handleCardSubmit);
+// addButton.addEventListener("click", () => handleAddCard());
+// popupImageContent.addEventListener("click", () => popupOpened(popupImage));
+// imageCloseButton.addEventListener("click", () => popupClose(popupImage));
+// popupPlace.addEventListener("submit", handleCardSubmit);
 
 //слушатель закрытие popup через esc
 function closeByEscape(evt) {

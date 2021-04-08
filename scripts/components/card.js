@@ -1,11 +1,11 @@
 export default class Card {
 
-    constructor (data, templateSelector, photoUpScale, handleCardClick) {
+    constructor (data, templateSelector, photoUpScale) {
         this._name = data.name;
         this._link = data.link;
         this._selector = templateSelector;
         this._photoUpScale = photoUpScale;
-        this._handleCardClick = handleCardClick;
+        
         
     }
 
@@ -35,6 +35,7 @@ export default class Card {
         this._elementsCard.elementCardTrashButton.addEventListener('click', () => this._deleteCard());
         this._elementsCard.elementCardLikeButton.addEventListener('click', () => this._likeCard());
         this._elementsCard.elementCardPhoto.addEventListener('click', () => this._photoUpScale(this._name, this._link))
+        
 
     }
 
