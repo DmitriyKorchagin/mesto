@@ -1,10 +1,11 @@
 export default class Card {
 
-    constructor (data, templateSelector, photoUpScale) {
+    constructor (data, templateSelector, photoUpScale, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._selector = templateSelector;
         this._photoUpScale = photoUpScale;
+        this._handleCardClick = handleCardClick;
         
     }
 

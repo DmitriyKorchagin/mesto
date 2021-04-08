@@ -1,5 +1,10 @@
-import Card from "./card.js";
-import FormValidator from "./FormValidator.js";
+import Card from "../scripts/components/card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import Section from "../scripts/components/Section";
+import PopupWithForm from "../scripts/components/PopupWithForm";
+import PopupWithImage from "../scripts/components/PopupWithImage";
+import UserInfo from "../scripts/components/UserInfo";
+
 
 //profile const
 const popupProfile = document.querySelector(".popup_profile");
@@ -24,17 +29,7 @@ const imageCloseButton = document.querySelector(
 const popupImageTitle = document.querySelector(".popup__image-title");
 const popupImageContent = document.querySelector(".popup__image-scale");
 
-//validation set
-const validationSetting = {
-  formSelector: ".popup__container",
-  fieldSetSelector: "popup__set",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inputErrorClass: ".popup__input-error",
-  errorClass: "popup__input-error_active",
-  popupTypeError: "popup__input_type-error",
-  formLabelSelector: ".popup__field",
-};
+
 
 //созданиe экземпляров классов валидации попапов и включение
 const popupProfileFormValidator = new FormValidator(
