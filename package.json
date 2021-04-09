@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "*Проект c интересными местами России.*\r *Сайт адаптирован для просмотра на устройствах с различным разрешением экрана, релизована возможность редактирования профиля через форму pop-up, добавления карточек с новыми местами и открытие изображение карточки в увеличенном масштабе, карточкам можно ставить like*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitriyKorchagin/mesto.git"
+  },
+  "author": "Dmitriy Korchagin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitriyKorchagin/mesto/issues"
+  },
+  "homepage": "https://github.com/DmitriyKorchagin/mesto#readme"
+}

@@ -6,6 +6,7 @@ export default class Card {
         this._selector = templateSelector;
         this._photoUpScale = photoUpScale;
         
+        
     }
 
 
@@ -34,6 +35,7 @@ export default class Card {
         this._elementsCard.elementCardTrashButton.addEventListener('click', () => this._deleteCard());
         this._elementsCard.elementCardLikeButton.addEventListener('click', () => this._likeCard());
         this._elementsCard.elementCardPhoto.addEventListener('click', () => this._photoUpScale(this._name, this._link))
+        
 
     }
 
