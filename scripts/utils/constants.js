@@ -48,22 +48,22 @@ const initialCards = [
 const popupProfile = document.querySelector(".popup_profile");
 const editButton = document.querySelector(".profile__edit-button");//
 const closeButton = document.querySelector(".popup__close-button");
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__job");
+const profileName = document.querySelector(".profile__name");//
+// const profileJob = document.querySelector(".profile__job");//
 const popupForm = popupProfile.querySelector(".popup__container");//
 const nameInput = popupForm.querySelector(".popup__input_name");
 const jobInput = popupForm.querySelector(".popup__input_job");
 //place const
 const popupPlace = document.querySelector(".popup_place");
 const addButton = document.querySelector(".profile__add-button");
-const elements = document.querySelector(".elements");
-const placeTitleInput = document.querySelector(".popup__input_place");
-const imageLinkInput = document.querySelector(".popup__input_link");
+// const elements = document.querySelector(".elements");
+// const placeTitleInput = document.querySelector(".popup__input_place");
+// const imageLinkInput = document.querySelector(".popup__input_link");
 //image const
-const popupImage = document.getElementById("popup_image");
-const imageCloseButton = document.querySelector(".popup__close-button_image-scale"
-);
-const popupImageTitle = document.querySelector(".popup__image-title");
-const popupImageContent = document.querySelector(".popup__image-scale");
+// const popupImage = document.getElementById("popup_image");
+// const imageCloseButton = document.querySelector(".popup__close-button_image-scale"
+// );
+// const popupImageTitle = document.querySelector(".popup__image-title");
+// const popupImageContent = document.querySelector(".popup__image-scale");
 
-export {validationSetting, initialCards, closeButton, editButton, popupForm, popupProfile, popupPlace};
+export {validationSetting, initialCards, closeButton, editButton, popupForm, popupProfile, popupPlace, profileName, nameInput, jobInput, addButton};
