@@ -3,8 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-
-
 module.exports = {
     entry: {
         main: './src/index.js'
@@ -15,6 +13,13 @@ module.exports = {
         filename: '[name].[hash].js',
         // pablicPath: ''
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000,
+        open: true
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html'
@@ -25,6 +30,16 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                test: /\.js$/i,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                },
+                exclude: '/node_modules/'
+            },
             {
                 test: /\.css$/i,
                 use: [
@@ -39,6 +54,10 @@ module.exports = {
                     'postcss-loader'
                 ],
             },
+            {
+                test: /\.(png|svg|jpg|gif|woff(2)|eot|ttf|otf)$/,
+                type: 'asset/resource' 
+            }
         ]
     }
 
