@@ -57,7 +57,7 @@ export default class FormValidator {
 
 
     // метод переключение состояния submit 
-    _toggleButtonState = () => {
+    _toggleButtonState () {
                 
         if (this._hasNotValidInput = this._inputList.some(inputElement => !inputElement.validity.valid)) {
             this._buttonElement.setAttribute('disabled', true);
