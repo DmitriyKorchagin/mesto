@@ -1,3 +1,4 @@
+import './index.css'; 
 import {validationSetting, initialCards, editButton, popupProfile, popupPlace, nameInput, jobInput, addButton
 } from '../scripts/utils/constants.js';
 
