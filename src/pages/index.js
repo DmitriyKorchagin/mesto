@@ -53,7 +53,7 @@ const popupProfileForm = new PopupWithForm({
 //создание карточки пользователем
 const popupCard = new PopupWithForm ({
   popupSelector: '.popup_place', handleFormSubmit: (inputValues) => {
-    const makeCard = createCard({name:inputValues.title, link:inputValues.link}, '.element_template');
+    const makeCard = createCard({name:inputValues.place, link:inputValues.link}, '.element_template');
     cardsList.addItem(makeCard);
     popupCard.closePopup();
   }
