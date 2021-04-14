@@ -28,9 +28,6 @@ export default class Card {
         return elementsCard;
     }
 
-
-
-
     _setEventListeners() {
         this._elementsCard.elementCardTrashButton.addEventListener('click', () => this._deleteCard());
         this._elementsCard.elementCardLikeButton.addEventListener('click', () => this._likeCard());

@@ -14,14 +14,14 @@ export default class Popup {
 //метод открытия
     openPopup(){
         this._popupElement.classList.add('popup_opened');
-        document.addEventListener('key', this._closePopup.esc);
+        document.addEventListener('keydown', this._closePopup.esc);
 
     }
 
 //метод закрытия
     closePopup(){
         this._popupElement.classList.remove('popup_opened');
-        document.removeEventListener('key', this._closePopup.esc);
+        document.removeEventListener('keydown', this._closePopup.esc);
     }
 
 //метод закрытия по esc
