@@ -55,12 +55,18 @@ export default class FormValidator {
         }
     };
 
+    _hasNotValidInput() {
+                
+        return this._inputList.some((inputElement) => {
+            return !(inputElement.validity.valid)
+            })
+        }
+
 
     // метод переключение состояния submit 
     _toggleButtonState () {
-                
-        if (this._hasNotValidInput = this._inputList.some(inputElement => !inputElement.validity.valid)) {
-            this._buttonElement.setAttribute('disabled', true);
+        if (this._hasNotValidInput(this._inputList)) {
+            this.setSubmitToInitial();
 
         } else {
             this._buttonElement.removeAttribute("disabled");
@@ -82,7 +88,7 @@ export default class FormValidator {
 
     
     setSubmitToInitial() {
-        this._formElement.querySelector(this._submitButtonSelector).setAttribute('disabled', true);
+        this._buttonElement.setAttribute('disabled', true);
     }
 
     enableValidation () {
